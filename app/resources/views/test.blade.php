@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <strong>Test Git</strong>
+    <strong>Test Git a jour </strong>
     
 </body>
 </html>
