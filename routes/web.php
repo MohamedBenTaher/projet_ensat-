@@ -14,14 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 /*Route::get('/', function () {
     return view('test');
 });*/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('/vols','VolController')->only('index');
+Route::resource('/vols', 'VolController');
