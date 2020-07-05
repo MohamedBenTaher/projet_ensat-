@@ -18,7 +18,9 @@ class VolController extends Controller
     public function index()
     {
         $vols = Vol::all();
-        return view('vols.index',['vols' => $vols]);  // vols est la variable qui va etre utiliser dans la vue vols.index
+        $ent = Entreprise::all();
+        return view('vols.index',['vols' => $vols, 'ent'=>$ent]);  // vols est la variable qui va etre utiliser dans la vue vols.index
+    //J'ai ajouté entreprise car il faut afficher le Nom de l'entreprise aux clients
     }
 
     /**

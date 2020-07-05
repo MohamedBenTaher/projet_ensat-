@@ -24,4 +24,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('vols','VolController');
+Route::resource('/vols','VolController')->only('index');
