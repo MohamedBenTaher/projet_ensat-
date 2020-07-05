@@ -20,6 +20,9 @@ class CreateVolsTable extends Migration
             $table->string('ville_arr');
             $table->date('date_dep');
             $table->date('date_arr');
+            $table->time('heure_dep');
+            $table->time('heure_arr');
+            $table->float('prix');
             $table->string('classe',25);
             $table->integer('num_places');
             $table->timestamps();

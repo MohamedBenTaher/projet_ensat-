@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::resource('/vols', 'VolController');
+Route::resource('/entreprise','EntrepriseController');
