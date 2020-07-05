@@ -17,7 +17,9 @@ class VolController extends Controller
      */
     public function index()
     {
+        
         $vols = Vol::all();
+        $this->authorize('viewAny',$vols); 
         return view('vols.index',['vols' => $vols]);  // vols est la variable qui va etre utiliser dans la vue vols.index
     }
 
@@ -28,9 +30,10 @@ class VolController extends Controller
      */
     public function create()
     {
+        
         $entreprises = Entreprise::all(); // sert à lister les entreprises li kaynin f la table 'entreprises' pour storer "entreprise_id" ds la table vols
-        return
-        view('vols.create',['entreprises' => $entreprises]);
+        
+        return view('vols.create',['entreprises' => $entreprises]);
     }
 
     /**
@@ -49,13 +52,16 @@ class VolController extends Controller
         $data['num_places'] = $request->num_places;
         $data['entreprise_id'] = $request->entreprise_id;
         $vol = Vol::create($data);
+
+        $this->authorize('create',$vol);
+        
         if($request->hasFile('image')){  // 'image' doit etre le name de l'input du file
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
             $image = Image::create(['path' => $path]);
             $vol->image()->save($image);
         }
-        return
-        redirect()->route('vols.index');
+       
+        return redirect()->route('vols.index');
         }
 
     /**
@@ -67,8 +73,7 @@ class VolController extends Controller
     public function show($id)
     {
         $vol = Vol::findOrFail($id); // on cherche le vol à afficher
-        return 
-        view('vols.show',[ 'vol' => $vol]); // vol est la variable qui va etre utiliser dans la vue vols.show
+        return view('vols.show',[ 'vol' => $vol]); // vol est la variable qui va etre utiliser dans la vue vols.show
     }
 
     /**
@@ -80,8 +85,10 @@ class VolController extends Controller
     public function edit($id)
     {
         $vol = Vol::findOrFail($id); // on cherche le vol à editer
-        return
-        view('vols.edit',[ 'vol' => $vol]); 
+        
+        $this->authorize('update',$vol);
+
+        return view('vols.edit',[ 'vol' => $vol]); 
     }
 
     /**
@@ -93,7 +100,10 @@ class VolController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         $vol = Vol::findOrFail($id);
+
+        $this->authorize('update',$vol);
 
         if($request->hasFile('image')){
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
@@ -117,8 +127,9 @@ class VolController extends Controller
         $vol->entreprise_id = $request->entreprise_id;
 
         $vol->save();
-        return
-        view('vols.show',['vol' => $vol]);
+        
+        
+        return  view('vols.show',['vol' => $vol]);
     }
 
     /**
@@ -129,9 +140,11 @@ class VolController extends Controller
      */
     public function destroy($id)
     {
+        
         $vol = Vol::findOrFail($id);
+        $this->authorize('delete',$vol);
         $vol->delete();
-        return
-        redirect()->back();
+        
+        return redirect()->back();
     }
 }

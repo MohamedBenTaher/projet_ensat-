@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
 
+=======
+>>>>>>> dcd04081b605ab196666bc8723e598cc9d630cc5
 /*Route::get('/', function () {
     return view('test');
 });*/
 Auth::routes();
 
+<<<<<<< HEAD
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -33,3 +37,7 @@ Route::get('comments/comment','commentController@index');
 Route::post('commentdelete','commentController@delete');
 Route::post('commentupdate','commentController@update');
 Route::post('commentsubmit','commentController@submit');
+=======
+Route::resource('/vols', 'VolController');
+Route::resource('/entreprise','EntrepriseController');
+>>>>>>> dcd04081b605ab196666bc8723e598cc9d630cc5
