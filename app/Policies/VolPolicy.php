@@ -51,7 +51,7 @@ class VolPolicy
      */
     public function create(User $user)
     {
-        $user->is_admin; 
+        return $user->is_admin; 
     }
 
     /**
@@ -63,7 +63,7 @@ class VolPolicy
      */
     public function update(User $user, Vol $vol)
     {
-        return $user->is_admin === $vol->user_id ; 
+        return $user->is_admin and $user->id=== $vol->user_id; 
     }
 
     /**
@@ -75,7 +75,7 @@ class VolPolicy
      */
     public function delete(User $user, Vol $vol)
     {
-        return $user->is_admin === $vol->user_id ; 
+        return $user->is_admin and $user->id=== $vol->user_id; 
     }
 
     /**
@@ -87,7 +87,7 @@ class VolPolicy
      */
     public function restore(User $user, Vol $vol)
     {
-        return $user->is_admin === $vol->user_id ; 
+        return $user->is_admin and $user->id=== $vol->user_id; 
     }
 
     /**
@@ -99,6 +99,6 @@ class VolPolicy
      */
     public function forceDelete(User $user, Vol $vol)
     {
-       return $user->is_admin === $vol->user_id ; 
+        return $user->is_admin and $user->id=== $vol->user_id; 
     }
 }
