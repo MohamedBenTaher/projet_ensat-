@@ -13,7 +13,7 @@ class Vol extends Model
         return
         $this->belongsTo(Entreprise::class);
     }
-
+   
     public function image(){
         return
         $this->hasOne(Image::class);
