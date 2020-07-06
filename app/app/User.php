@@ -10,13 +10,17 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
+   public function comments(){
+        return
+        $this->hasMany(Comment::class);
+    } 
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','username'
     ];
 
     /**
