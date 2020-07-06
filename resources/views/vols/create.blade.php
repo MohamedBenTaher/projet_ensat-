@@ -11,14 +11,14 @@
     <div class="col-md-12">
         <div class="form-group">
             <strong>Ville de Départ :</strong>
-            <input type="text" name="ville_dep" class="form-control" placeholder="Nom d'entreprise">
+            <input type="text" name="ville_dep" class="form-control" placeholder="ville de départ">
             <span class="text-danger">{{ $errors->first('Nom') }}</span>
         </div>
     </div>
     <div class="col-md-12">
         <div class="form-group">
             <strong>Ville D'arrivé </strong>
-            <input type="text" name="ville_arr" class="form-control" placeholder="arrivé">
+            <input type="text" name="ville_arr" class="form-control" placeholder="ville d'arrivé">
             <span class="text-danger">{{ $errors->first('title') }}</span>
         </div>
     </div>
@@ -77,7 +77,7 @@
     </div>
     
     <div class="col-md-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+       <input type="submit" value="Ajouter" class="btn btn-primary">
     </div>
 </div>
  
