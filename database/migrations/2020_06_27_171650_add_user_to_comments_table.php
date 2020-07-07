@@ -13,9 +13,9 @@ class AddUserToCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
+        /*Schema::table('comments', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        });
+        });*/
     }
 
     /**
@@ -25,9 +25,9 @@ class AddUserToCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
+       /* Schema::table('comments', function (Blueprint $table) {
             $table->dropForeign('comments_user_id_foreign');
             $table->dropColumn('user_id');
-        });
+        });*/
     }
 }
