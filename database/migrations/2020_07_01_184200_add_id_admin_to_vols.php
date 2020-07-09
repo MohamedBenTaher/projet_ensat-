@@ -26,6 +26,7 @@ class AddIdAdminToVols extends Migration
     public function down()
     {
         Schema::table('vols', function (Blueprint $table) {
+            $table->dropForeign('vols_users_id_foreign');
             $table->dropColumn('user_id');
         });
     }

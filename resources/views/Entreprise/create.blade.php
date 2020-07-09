@@ -6,7 +6,7 @@
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Une Entreprise</a></h2>
 <br>
  
-<form action="{{ route('entreprises.store')}}" method="POST" name="add_vol">
+<form action="{{ route('entreprise.store')}}" method="POST" name="add_vol">
 @csrf
  
 <div class="row">
