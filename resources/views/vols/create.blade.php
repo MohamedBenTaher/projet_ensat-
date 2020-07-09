@@ -1,12 +1,19 @@
 @extends('layouts.travel')
  
 @section('content')
+
+ @can('create', User::class)
+
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Un Vol</a></h2>
 <br>
- 
+
+
+
 <form action="{{ route('vols.store')}}" method="POST" name="add_vol">
 @csrf
- 
+
+    
+
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
@@ -80,6 +87,6 @@
        <input type="submit" value="Ajouter" class="btn btn-primary">
     </div>
 </div>
- 
 </form>
+@endcan 
 @endsection
