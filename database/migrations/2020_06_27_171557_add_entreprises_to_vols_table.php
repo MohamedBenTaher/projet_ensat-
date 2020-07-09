@@ -14,6 +14,7 @@ class AddEntreprisesToVolsTable extends Migration
     public function up()
     {
         Schema::table('vols', function (Blueprint $table) {
+            
             $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
         });
     }

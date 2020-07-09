@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vol extends Model
 {
 
-    protected $fillable = ['ville_dep','ville_arr','date_dep','date_arr','heure_dep','heure_arr','classe','prix','num_places','entreprise_id'];
+    protected $fillable = ['ville_dep','ville_arr','date_dep','date_arr','heure_dep','heure_arr','classe','prix','num_places'];
 
     public function entreprise(){
         return

@@ -25,7 +25,7 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
-        return view('Entreprise.create');
+        return view('entreprise.create');
     }
 
     /**
@@ -37,9 +37,9 @@ class EntrepriseController extends Controller
     public function store(Request $request)
     {
      $data['Nom']=$request->Nom;
-     $data['description']=$request->description;
+     $data['Description']=$request->Description;
      $ent=Entreprise::create($data);
-     return redirect()->route('entreprises.index');
+     return redirect()->route('entreprise.index');
         
     }
 
@@ -53,7 +53,7 @@ class EntrepriseController extends Controller
     {
         $ent= Entreprise::findOrFail($id);  
         return 
-        view('Entreprise.show',[ 'ent' => $ent]); 
+        view('entreprise.show',[ 'ent' => $ent]); 
     }
 
     /**
@@ -66,7 +66,7 @@ class EntrepriseController extends Controller
     {
         $ent = Entreprise::findOrFail($id); 
         return
-        view('Entreprise.edit',[ 'ent' => $ent]); 
+        view('entreprise.edit',[ 'ent' => $ent]); 
     }
 
     /**
@@ -80,9 +80,9 @@ class EntrepriseController extends Controller
     {
          $ent=Entreprise::findOrFail($id);
          $ent->Nom=$request->Nom;
-         $ent->description=$request->description;
+         $ent->Description=$request->Description;
          $ent->save();
-         return view('Entreprise',['ent'=> $ent]);
+         return view('entreprise',['ent'=> $ent]);
 
     }
 
@@ -98,6 +98,6 @@ class EntrepriseController extends Controller
       $ent=Entreprise::findOrFail($id);
       $ent->delete();
         return
-        view('Entreprise.index');
+        view('entreprise.index');
     }
 }

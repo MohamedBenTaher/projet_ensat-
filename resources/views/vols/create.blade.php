@@ -2,7 +2,7 @@
  
 @section('content')
 
- @can('create', User::class)
+ <!-- can('create', User::class) -->
 
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Un Vol</a></h2>
 <br>
@@ -65,6 +65,7 @@
             <span class="text-danger">{{ $errors->first('classe') }}</span>
         </div>
     </div>
+
     @foreach ($entreprises as $entreprise)
     <div class="col-md-12">
         <div class="form-group">
@@ -74,7 +75,23 @@
             <span class="text-danger">{{ $errors->first('classe') }}</span>
         </div>
     </div>
-    @endforeach
+     @endforeach
+
+     
+    <div class="col-md-12">
+        <div class="form-group">
+            <strong>Nombre de places</strong>
+            <input type="text" name="num_places" class="form-control" placeholder="Entrer le nombre de places du vol ">
+            <span class="text-danger">{{ $errors->first('num_places') }}</span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <strong>Prix</strong>
+            <input type="text" name="prix" class="form-control" placeholder="Entrer le prix du vol ">
+            <span class="text-danger">{{ $errors->first('prix') }}</span>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="form-group">
             <strong>Image :</strong>
@@ -88,5 +105,6 @@
     </div>
 </div>
 </form>
-@endcan 
+<!-- endcan --> 
+
 @endsection
