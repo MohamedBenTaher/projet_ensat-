@@ -166,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Illuminate\Auth\AuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -190,7 +191,7 @@ return [
     */
 
     'aliases' => [
-
+        'Auth' => Illuminate\Support\Facades\Auth::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
