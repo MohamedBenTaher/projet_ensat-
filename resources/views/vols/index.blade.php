@@ -14,7 +14,7 @@
         <div class="mb-1 text-muted">le {{$vol['date_dep']}} en {{$vol->heure_dep}}</div>
         <p class="card-text mb-auto">travel to {{$vol['ville_arr']}}  </p>
         <p><strong>prix</strong>: {{$vol->prix}}</p>
-          <a href={{route('vols.show',['id'=>$vol->id]}} class="btn btn-primary">Fly</a>
+          <a href={{route('vols.show',['id'=>$vol->id])}} class="btn btn-primary"> Fly </a>
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
