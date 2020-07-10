@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Storage;
 class VolController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except' =>['index','show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +29,7 @@ class VolController extends Controller
     {
         
         $vols = Vol::all();
-        $this->authorize('viewAny',$vols); 
+       // $this->authorize('viewAny',$vols); 
         return view('vols.index',['vols' => $vols]);  // vols est la variable qui va etre utiliser dans la vue vols.index
     }
 
@@ -48,12 +58,19 @@ class VolController extends Controller
         $data['ville_arr'] = $request->ville_arr;
         $data['date_dep'] = $request->date_dep;
         $data['date_arr'] = $request->date_arr;
+        $data['heure_dep'] = $request->heure_dep;
+        $data['heure_arr'] = $request->heure_arr;
         $data['classe'] = $request->classe;
         $data['num_places'] = $request->num_places;
-        $data['entreprise_id'] = $request->entreprise_id;
+        $data['prix'] = $request->prix;
+        $data['entreprise_id'] = $request->entreprise;
+        $data['user_id'] =auth()->user()->id;
+
+        // $data['user_id'] = $request->user_id ;*/
+
         $vol = Vol::create($data);
 
-        $this->authorize('create',$vol);
+        //$this->authorize('create',$vol);
         
         if($request->hasFile('image')){  // 'image' doit etre le name de l'input du file
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
@@ -86,7 +103,7 @@ class VolController extends Controller
     {
         $vol = Vol::findOrFail($id); // on cherche le vol à editer
         
-        $this->authorize('update',$vol);
+        //$this->authorize('update',$vol);
 
         return view('vols.edit',[ 'vol' => $vol]); 
     }
@@ -103,7 +120,7 @@ class VolController extends Controller
        
         $vol = Vol::findOrFail($id);
 
-        $this->authorize('update',$vol);
+        //$this->authorize('update',$vol);
 
         if($request->hasFile('image')){
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
@@ -122,9 +139,15 @@ class VolController extends Controller
         $vol->ville_arr  = $request->ville_arr;
         $vol->date_dep = $request->date_dep;
         $vol->date_arr = $request->date_arr;
+        $vol->heure_dep = $request->heure_dep;
+        $vol->heure_arr = $request->heure_arr;
         $vol->classe = $request->classe;
+        $vol->prix = $request->prix;
         $vol->num_places = $request->num_places;
-        $vol->entreprise_id = $request->entreprise_id;
+        $vol->entreprise_id = $request->entreprise;
+        $vol->user_id =auth()->user()->id;
+        
+        //$vol->user_id = $request->user_id;*/
 
         $vol->save();
         
@@ -142,7 +165,7 @@ class VolController extends Controller
     {
         
         $vol = Vol::findOrFail($id);
-        $this->authorize('delete',$vol);
+        //$this->authorize('delete',$vol);
         $vol->delete();
         
         return redirect()->back();
