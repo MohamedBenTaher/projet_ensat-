@@ -74,10 +74,10 @@ class VolController extends Controller
         
         if($request->hasFile('image')){  // 'image' doit etre le name de l'input du file
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
-            $image = Image::create(['path' => $path]);
+            $image = new Image(['path' => $path]);
             $vol->image()->save($image);
         }
-       
+
         return redirect()->route('vols.index');
         }
 
