@@ -16,14 +16,15 @@ class VolPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function before($user , $ability)
+    
+    /* public function before($user , $ability)
         {
             if($user->is_admin)
                 {
                     return true ;
                 }
         }
-
+      */  
    public function viewAny(User $user)
     {
         return true ;
@@ -51,7 +52,7 @@ class VolPolicy
      */
     public function create(User $user)
     {
-        return $user->is_admin; 
+        return $user->is_admin ; 
     }
 
     /**
