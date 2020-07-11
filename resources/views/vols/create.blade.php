@@ -9,10 +9,8 @@
 
 
 
-<form action="{{ route('vols.store')}}" method="POST" name="add_vol">
+<form action="{{ route('vols.store')}}" method="POST" name="add_vol" enctype="multipart/form-data">
 @csrf
-
-    
 
 <div class="row">
     <div class="col-md-12">
@@ -66,18 +64,18 @@
         </div>
     </div>
 
-    @foreach ($entreprises as $entreprise)
     <div class="col-md-12">
         <div class="form-group">
-            <strong>Entreprise : </strong>
-        <input class="col-span-2"type="radio" name={{$entreprise['id']}} class="form-control"value={{$entreprise['Nom']}}>
-            <label class="col-span-2" for={{$entreprise['id']}}>{{$entreprise['Nom']}}</label>
-            <span class="text-danger">{{ $errors->first('classe') }}</span>
+            <strong>Entreprise</strong>
+    <select class="custom-slect mr-sm-2" name="entreprise" id="inlineFormCustomSelect">
+    @foreach ($entreprises as $entreprise)
+    <option value="{{$entreprise->id}}">{{$entreprise->Nom}}</option>
+    @endforeach
+    </select>
         </div>
     </div>
-     @endforeach
-
-     
+    
+    
     <div class="col-md-12">
         <div class="form-group">
             <strong>Nombre de places</strong>

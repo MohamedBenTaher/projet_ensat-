@@ -17,9 +17,16 @@
         </div>
         
 
-        @can('delete', $vol)
-        <a href={{route('vols.delete',['id'=>$vol->id])}} class="btn btn-danger">Delete</a>
-        @endcan
+        @can('delete')
+        <td> <form style="display: inline" action="{{ route('vols.destroy ',['id' => $vol->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </form>
+         </td>    
+         @endcan
         
         @can('update', $vol)
         <a href={{route('vols.edit',['id'=>$vol->id])}} class="btn btn-warning">Mettre à jour</a>

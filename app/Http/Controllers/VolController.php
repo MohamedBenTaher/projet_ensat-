@@ -63,8 +63,10 @@ class VolController extends Controller
         $data['classe'] = $request->classe;
         $data['num_places'] = $request->num_places;
         $data['prix'] = $request->prix;
-        /*$data['entreprise_id'] = $request->entreprise_id;
-        $data['user_id'] = $request->user_id ;*/
+        $data['entreprise_id'] = $request->entreprise;
+        $data['user_id'] =auth()->user()->id;
+
+        // $data['user_id'] = $request->user_id ;*/
 
         $vol = Vol::create($data);
 
@@ -72,10 +74,10 @@ class VolController extends Controller
         
         if($request->hasFile('image')){  // 'image' doit etre le name de l'input du file
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
-            $image = Image::create(['path' => $path]);
+            $image = new Image(['path' => $path]);
             $vol->image()->save($image);
         }
-       
+
         return redirect()->route('vols.index');
         }
 
@@ -142,8 +144,10 @@ class VolController extends Controller
         $vol->classe = $request->classe;
         $vol->prix = $request->prix;
         $vol->num_places = $request->num_places;
-        /*$vol->entreprise_id = $request->entreprise_id;
-        $vol->user_id = $request->user_id;*/
+        $vol->entreprise_id = $request->entreprise;
+        $vol->user_id =auth()->user()->id;
+        
+        //$vol->user_id = $request->user_id;*/
 
         $vol->save();
         
