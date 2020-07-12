@@ -1,7 +1,4 @@
-xtends('layouts.travel')
-
-
- 
+@extends('layouts.travel')
 @section('content')
 <h2 style="margin-top: 12px;" class="text-center">Mettre à jour les infos de l'entreprise</a></h2>
 <br>
