@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <div class="form-group">
             <strong>Description :</strong>
-            <input type="text" name="Description" class="form-control" placeholder="arrivé">
+            <input type="text" name="Description" class="form-control" placeholder="Description de l'entreprise">
             <span class="text-danger">{{ $errors->first('title') }}</span>
         </div>
     

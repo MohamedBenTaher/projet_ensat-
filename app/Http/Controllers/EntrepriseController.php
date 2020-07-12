@@ -14,8 +14,8 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
-        $ent=Entreprise::all();
-        return view('ent.index',['ent'=>$ent]);
+        $ents=Entreprise::all();
+        return view('entreprise.index',['ents'=>$ents]);
     }
 
     /**
