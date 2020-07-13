@@ -2,7 +2,10 @@
  
 @section('content')
 
- <!-- can('create', User::class) -->
+<!--    can('create', Auth::user() ) -->
+
+@if (Auth::user()->is_admin() == true )
+    
 
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Un Vol</a></h2>
 <br>
@@ -105,6 +108,9 @@
     </div>
 </div>
 </form>
-<!-- endcan --> 
+
+@endif
+
+<!-- endcan -->  
 
 @endsection

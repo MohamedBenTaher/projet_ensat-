@@ -28,7 +28,7 @@ class VolPolicy
       
    public function viewAny(User $user)
     {
-        return true ;
+        return $user->is_admin() ;
     }
 
     /**
@@ -42,7 +42,7 @@ class VolPolicy
     
      public function view(User $user, Vol $vol)
     {
-        return true ;
+        return $user->is_admin();
     }
 
     /**
@@ -53,7 +53,7 @@ class VolPolicy
      */
     public function create(User $user)
     {
-        return $user->is_admin ; 
+        return $user->is_admin() ; 
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\VolPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,8 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-        'App\Vol' => 'App\Policies\VolPolicy',
+       // 'App\Model' => 'App\Policies\ModelPolicy',
+       'App\Vol' => 'App\Policies\VolPolicy',
+       // Vol::class => VolPolicy::class ,
     ];
 
     /**
@@ -28,4 +30,6 @@ class AuthServiceProvider extends ServiceProvider
 
         //
     }
+
 }
+

@@ -13,21 +13,32 @@
         <div class="mb-1 text-muted">le {{$vol['date_dep']}} en {{$vol->heure_dep}}</div>
         <p class="card-text mb-auto">travel to {{$vol['ville_arr']}}  </p>
         <p><strong>prix</strong>: {{$vol->prix}}</p>
-        <a href={{route('vols.show',['id'=>$vol->id])}} class="btn btn-primary"> Fly </a>
+        <a href="{{route('vols.show',['vol'=>$vol->id])}}" class="btn btn-primary"> Fly </a>
         </div>
         
 
-        @can('delete', $vol)
-        <a href={{route('vols.delete',['id'=>$vol->id])}} class="btn btn-danger">Delete</a>
-        @endcan
+        @if(!Auth::guest())
         
-        @can('update', $vol)
-        <a href={{route('vols.edit',['id'=>$vol->id])}} class="btn btn-warning">Mettre à jour</a>
-        @endcan
+              @if(Auth::user()->id == $vol->user_id)
+
        
-        @can('view',$vol)
-        <a href={{route('vols.show',['id'=>$vol->id] )}} class="btn btn-Secondary">Volez</a>
-        @endcan
+        <a href="{{route('vols.destroy',['vol'=>$vol->id])}}" class="btn btn-danger">Delete</a>
+        
+        <!-- can('update',Vol::class)-->
+        
+        <a href="{{route('vols.edit',['vol'=>$vol->id])}}" class="btn btn-warning">Mettre à jour</a>
+        
+        <!-- endcan -->
+        
+              @endif
+        
+        @endif
+
+        <!-- can('view',$vol)-->
+
+        <a href="{{route('vols.show',['vol'=>$vol->id] )}}" class="btn btn-Secondary">Volez</a>
+        
+        <!-- endcan -->
       
       
       </div>

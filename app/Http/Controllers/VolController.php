@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Entreprise;
 use App\Image;
 use App\Vol;
@@ -29,7 +30,7 @@ class VolController extends Controller
     {
         
         $vols = Vol::all();
-       // $this->authorize('viewAny',$vols); 
+        //$this->authorize('viewAny',$vols); 
         return view('vols.index',['vols' => $vols]);  // vols est la variable qui va etre utiliser dans la vue vols.index
     }
 
@@ -43,6 +44,11 @@ class VolController extends Controller
         
         $entreprises = Entreprise::all(); // sert à lister les entreprises li kaynin f la table 'entreprises' pour storer "entreprise_id" ds la table vols
         
+        if( auth()->user()->is_amdin !== 0 )
+            {
+                return redirect('/vols');
+            }
+
         return view('vols.create',['entreprises' => $entreprises]);
     }
 
@@ -54,6 +60,12 @@ class VolController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->is_admin == 0 )
+            {
+                return redirect('/vols');
+            }
+
+        
         $data['ville_dep'] = $request->ville_dep;
         $data['ville_arr'] = $request->ville_arr;
         $data['date_dep'] = $request->date_dep;
@@ -67,11 +79,12 @@ class VolController extends Controller
         $data['user_id'] =auth()->user()->id;
 
         // $data['user_id'] = $request->user_id ;*/
-
-        $vol = Vol::create($data);
-
-        //$this->authorize('create',$vol);
         
+        $this->authorize('create',Vol::class);
+        
+        
+        
+        $vol = Vol::create($data);
         if($request->hasFile('image')){  // 'image' doit etre le name de l'input du file
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
             $image = Image::create(['path' => $path]);
@@ -103,6 +116,11 @@ class VolController extends Controller
     {
         $vol = Vol::findOrFail($id); // on cherche le vol à editer
         
+        if(auth()->user()->id !== $vol->user_id)
+            {
+                return redirect('/vols');
+            }
+
         //$this->authorize('update',$vol);
 
         return view('vols.edit',[ 'vol' => $vol]); 
@@ -119,6 +137,11 @@ class VolController extends Controller
     {
        
         $vol = Vol::findOrFail($id);
+
+        if(auth()->user()->id !== $vol->user_id)
+            {
+                return redirect('/vols');
+            }
 
         //$this->authorize('update',$vol);
 
@@ -165,7 +188,14 @@ class VolController extends Controller
     {
         
         $vol = Vol::findOrFail($id);
-        //$this->authorize('delete',$vol);
+        
+        if(auth()->user()->id !== $vol->user_id)
+            {
+                return redirect('/vols');
+            }
+        
+            //$this->authorize('delete',$vol);
+
         $vol->delete();
         
         return redirect()->back();

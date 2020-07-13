@@ -20,34 +20,22 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 /*  Route::get('avis/avis', 'avisController@index');*/
 
-<<<<<<< HEAD
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('vols','VolController');
+
 /*Route::post('comments/comment','commentController@store');
 Route::get('comments/comment','commentController@index');
 Route::post('commentdelete','commentController@delete');
 Route::post('commentupdate','commentController@update');
 Route::post('commentsubmit','commentController@submit');*/
+
+Route::resource('vols','VolController');
+
 Route::resource('/entreprise','EntrepriseController');
+
 Route::resource('/comments','commentsController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
-Route::resource('vols','VolController');
-
-/*
-Route::post('comments/comment','commentController@store');
-Route::get('comments/comment','commentController@index');
-Route::post('commentdelete','commentController@delete');
-Route::post('commentupdate','commentController@update');
-Route::post('commentsubmit','commentController@submit');
-*/
-
-Route::resource('/entreprise','EntrepriseController');
->>>>>>> c9be6f8f8bd883fdfd20de6d2cc3698c65cff826
