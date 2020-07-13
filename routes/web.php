@@ -1,7 +1,12 @@
 <?php
 
+use Stripe\Charge;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +33,9 @@ Route::post('likes','likesController@store');
 Route::post('dislikes','dislikesController@store');
 
 Route::resource('entreprise','EntrepriseController');
+Route::get('stripe/{id}', 'StripePaymentController@stripe');
+Route::post('stripe/{id}', 'StripePaymentController@stripePost')->name('stripe.post');
+
+
+
+
