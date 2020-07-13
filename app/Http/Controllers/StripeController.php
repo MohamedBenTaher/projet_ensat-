@@ -13,12 +13,12 @@ class StripePaymentController extends Controller
 {
     /**
      * success response method.
-     *
+     * @param  int 
      * @return \Illuminate\Http\Response
      */
     public function stripe($id)
-    {
-        return view('stripe');
+    {    $vol=Vol::finOrFail($id);
+        return view('vols.stripe',[ 'id' => $vol->id]);
     }
   
     /**
