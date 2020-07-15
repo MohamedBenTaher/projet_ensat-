@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameToUsersTable extends Migration
+class CreateDislikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddUsernameToUsersTable extends Migration
      */
     public function up()
     {
-      /*  Schema::table('users', function (Blueprint $table) {
-            $table->string('username');  
-        });*/
+        Schema::create('dislikes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('comment_id');
+            $table->integer('number');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -25,8 +29,6 @@ class AddUsernameToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('username');
-        });
+        Schema::dropIfExists('dislikes');
     }
 }

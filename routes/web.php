@@ -1,7 +1,12 @@
 <?php
 
+use Stripe\Charge;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +26,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-/*  Route::get('avis/avis', 'avisController@index');*/
 
 
 /*Route::post('comments/comment','commentController@store');
@@ -30,12 +34,20 @@ Route::post('commentdelete','commentController@delete');
 Route::post('commentupdate','commentController@update');
 Route::post('commentsubmit','commentController@submit');*/
 
-Route::resource('vols','VolController');
+//Route::resource('vols','VolController');
 
-Route::resource('/entreprise','EntrepriseController');
+//Route::resource('entreprise','EntrepriseController');
 
 Route::resource('/comments','commentsController');
+Route::resource('vols','VolController');
+Route::post('likes','likesController@store');
+Route::post('dislikes','dislikesController@store');
 
-Auth::routes();
+Route::resource('entreprise','EntrepriseController');
+Route::get('stripe/{id}', 'StripePaymentController@stripe');
+Route::post('stripe/{id}', 'StripePaymentController@stripePost')->name('stripe.post');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

@@ -3,6 +3,8 @@
 
  
 @section('content')
+@if (Auth::user()->is_admin() == true )
+ 
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Une Entreprise</a></h2>
 <br>
  
@@ -20,7 +22,7 @@
     <div class="col-md-12">
         <div class="form-group">
             <strong>Description :</strong>
-            <input type="text" name="Description" class="form-control" placeholder="arrivé">
+            <input type="text" name="Description" class="form-control" placeholder="Description de l'entreprise">
             <span class="text-danger">{{ $errors->first('title') }}</span>
         </div>
     
@@ -31,4 +33,5 @@
 </div>
  
 </form>
+@endif
 @endsection

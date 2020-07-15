@@ -14,8 +14,8 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
-        $ent=Entreprise::all();
-        return view('ent.index',['ent'=>$ent]);
+        $ents=Entreprise::all();
+        return view('entreprise.index',['ents'=>$ents]);
     }
 
     /**
@@ -25,6 +25,11 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
+        if( auth()->user()->is_admin() !== true )
+            {
+                return redirect('/entreprise');
+            }
+
         return view('entreprise.create');
     }
 
@@ -36,8 +41,14 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->is_admin == 0 )
+        {
+            return redirect('/entreprise');
+        
+        }
      $data['Nom']=$request->Nom;
      $data['Description']=$request->Description;
+     $data['user_id'] =auth()->user()->id;
      $ent=Entreprise::create($data);
      return redirect()->route('entreprise.index');
         
@@ -52,8 +63,7 @@ class EntrepriseController extends Controller
     public function show($id)
     {
         $ent= Entreprise::findOrFail($id);  
-        return 
-        view('entreprise.show',[ 'ent' => $ent]); 
+        return view('entreprise.show',[ 'ent' => $ent]); 
     }
 
     /**
@@ -65,8 +75,11 @@ class EntrepriseController extends Controller
     public function edit($id)
     {
         $ent = Entreprise::findOrFail($id); 
-        return
-        view('entreprise.edit',[ 'ent' => $ent]); 
+        if(auth()->user()->id !== $ent->user_id)
+            {
+                return redirect('/entreprise');
+            }
+        return view('entreprise.edit',[ 'ent' => $ent]); 
     }
 
     /**
@@ -78,9 +91,16 @@ class EntrepriseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
          $ent=Entreprise::findOrFail($id);
+         if(auth()->user()->id !== $ent->user_id)
+            {
+                return redirect('/entreprise');
+            }
+
          $ent->Nom=$request->Nom;
          $ent->Description=$request->Description;
+         $ent->user_id =auth()->user()->ent;
          $ent->save();
          return view('entreprise',['ent'=> $ent]);
 
@@ -96,6 +116,10 @@ class EntrepriseController extends Controller
     public function destroy($id)
     {
       $ent=Entreprise::findOrFail($id);
+      if(auth()->user()->id !== $ent->user_id)
+            {
+                return redirect('/entreprise');
+            }
       $ent->delete();
         return
         view('entreprise.index');

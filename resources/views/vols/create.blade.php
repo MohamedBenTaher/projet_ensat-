@@ -12,10 +12,8 @@
 
 
 
-<form action="{{ route('vols.store')}}" method="POST" name="add_vol">
+<form action="{{ route('vols.store')}}" method="POST" name="add_vol" enctype="multipart/form-data">
 @csrf
-
-    
 
 <div class="row">
     <div class="col-md-12">

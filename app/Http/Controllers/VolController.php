@@ -44,7 +44,7 @@ class VolController extends Controller
         
         $entreprises = Entreprise::all(); // sert à lister les entreprises li kaynin f la table 'entreprises' pour storer "entreprise_id" ds la table vols
         
-        if( auth()->user()->is_amdin !== 0 )
+        if( auth()->user()->is_admin() !== true )
             {
                 return redirect('/vols');
             }
@@ -60,10 +60,10 @@ class VolController extends Controller
      */
     public function store(Request $request)
     {
-        if(auth()->user()->is_admin == 0 )
+        /*if(auth()->user()->is_admin == 0 )
             {
                 return redirect('/vols');
-            }
+            }*/
 
         
         $data['ville_dep'] = $request->ville_dep;
@@ -80,17 +80,17 @@ class VolController extends Controller
 
         // $data['user_id'] = $request->user_id ;*/
         
-        $this->authorize('create',Vol::class);
+        //$this->authorize('create',Vol::class);
         
         
         
         $vol = Vol::create($data);
         if($request->hasFile('image')){  // 'image' doit etre le name de l'input du file
             $path = Storage::disk('public')->put('vol_images',$request->file('image'));
-            $image = Image::create(['path' => $path]);
+            $image = new Image(['path' => $path]);
             $vol->image()->save($image);
         }
-       
+
         return redirect()->route('vols.index');
         }
 
