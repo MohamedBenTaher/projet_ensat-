@@ -13,7 +13,7 @@
           <!-- can('view',$ent)-->
 
         
-         <a href="{{route('entreprise.show',['ent' => $ent->id])}}" class="btn btn-outline-Secondary">infos and Reviews</a>
+         <a href="{{route('entreprise.show',['entreprise' => $ent->id])}}" class="btn btn-outline-Secondary">infos and Reviews</a>
          
          <!-- endcan
          can('update', $ent)-->
@@ -23,12 +23,12 @@
  
          
 
-        <a href="{{route('entreprise.edit',['ent' => $ent->id])}}" class="btn btn-outline-warning">Mettre à jour</a>
+        <a href="{{route('entreprise.edit',['entreprise' => $ent->id])}}" class="btn btn-outline-warning">Mettre à jour</a>
          
         <!-- endcan
          can('delete')-->
          
-         <form  action="{{ route('entreprise.destroy ',['ent' => $ent->id]) }}" method="POST">
+         <form  action="{{ route('entreprise.destroy ',['entreprise' => $ent->id]) }}" method="POST">
         @csrf
         @method('DELETE')
         
