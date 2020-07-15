@@ -25,7 +25,7 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
-        if( auth()->user()->is_admin() !== true )
+        if( auth()->user()->is_admin !== true )
             {
                 return redirect('/entreprise');
             }
