@@ -18,7 +18,7 @@
         <div class="mb-1 text-muted">le {{$vol['date_dep']}} en {{$vol->heure_dep}}</div>
         <p class="card-text">travel to {{$vol['ville_arr']}}  </p>
          
-         <a href="{{route('vols.show',['vol'=>$vol->id] )}}"  class="btn btn-outline-Secondary">Volez</a>
+         <a href="{{route('vols.show',['vol' => $vol->id])}}"  class="btn btn-outline-Secondary">Volez</a>
 
          @if(!Auth::guest())
         

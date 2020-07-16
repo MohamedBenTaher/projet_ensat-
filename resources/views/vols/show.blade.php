@@ -11,13 +11,13 @@
    <div class="mb-1 text-muted">Départ en : {{$vol['heure_dep']}} arrivé en : {{$vol['heure_arr']}}</div>
    <p class="card-text">voyagez à {{$vol['ville_arr']}} en classe {{$vol->classe}}  </p>
 
-   <a href="{{route('stripe', 'id'=>$vol->id)}}"  class="btn btn-outline-Secondary">{{$vol->prix}} DH</a>
+   <a href="{{route('stripe', ['id' => $vol->id])}}"  class="btn btn-outline-Secondary">{{$vol->prix}} DH</a>
   
     <!--  can('update', $vol)-->
     @if(!Auth::guest())
         
               @if(Auth::user()->id == $vol->user_id)
-   <a href="{{route('vols.edit',['vol'=>$vol->id])}}"  class="btn btn-outline-warning">Mettre à jour</a>
+   <a href="{{route('vols.edit',['vol' => $vol->id])}}"  class="btn btn-outline-warning">Mettre à jour</a>
     <!-- endcan
     can('delete')-->
     <form  action="{{ route('vols.destroy ',['vol' => $vol->id]) }}" method="POST">
