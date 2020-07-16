@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+                    
+                    <a href="{{route('vols.index')}}" class="btn btn-primary">visitez les vols </a>
+                    
                 </div>
             </div>
         </div>

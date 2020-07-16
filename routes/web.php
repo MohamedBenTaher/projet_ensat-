@@ -44,8 +44,7 @@ Route::post('likes','likesController@store');
 Route::post('dislikes','dislikesController@store');
 
 Route::resource('entreprise','EntrepriseController');
-Route::get('stripe/{id}', 'StripePaymentController@stripe');
-Route::post('stripe/{id}', 'StripePaymentController@stripePost')->name('stripe.post');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
