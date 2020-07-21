@@ -76,7 +76,7 @@
     </p>
   </div>
   <div>
-   <p style="color:white"><center> Project Done By : Youssef Charfi , Yussuf Laidouni , Mohamed Ben Taher, Mehdi Mansour</center></p>
+   <center><p style="color:white">Project Done By : Youssef Charfi , Yussuf Laidouni , Mohamed Ben Taher, Mehdi Mansour</p></center>
   </div>
 </footer>
 <!-- JS, Popper.js, and jQuery -->
