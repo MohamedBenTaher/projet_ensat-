@@ -66,6 +66,9 @@
 
   
   @yield('content')
+  @if (request()->input('q')) 
+     <h6 class="alert alert-info">{{$vols->total()}} résultat(s) pour la recherche "{{request()->q}}"</h6>
+  @endif
 </main>
 
 <footer class="text-muted" id="foot">

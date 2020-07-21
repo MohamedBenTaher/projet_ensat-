@@ -44,7 +44,7 @@ class VolController extends Controller
         
         $entreprises = Entreprise::all(); // sert à lister les entreprises li kaynin f la table 'entreprises' pour storer "entreprise_id" ds la table vols
         
-        if( auth()->user()->is_admin() !== true )
+        if( auth()->user()->is_admin !== true )
             {
                 return redirect('/vols');
             }
@@ -199,5 +199,10 @@ class VolController extends Controller
         $vol->delete();
         
         return redirect()->back();
+    }
+    public function search() {
+        $q=request()->input('q');
+        $vols=Vol::where('ville_arr', 'like' ,"%$q%")->paginate(3);
+     return view('vols.search')->with('vols',$vols);
     }
 }

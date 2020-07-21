@@ -40,6 +40,7 @@ Route::post('commentsubmit','commentController@submit');*/
 
 Route::resource('/comments','commentsController');
 Route::resource('vols','VolController');
+Route::get('/search','VolController@search')->name('vols.search');
 Route::post('likes','likesController@store');
 Route::post('dislikes','dislikesController@store');
 
