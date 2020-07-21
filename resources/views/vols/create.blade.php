@@ -1,7 +1,6 @@
 @extends('layouts.travel')
  
 @section('content')
-
 <!--    can('create', Auth::user() ) -->
 
 @if (Auth::user()->is_admin() == true )
