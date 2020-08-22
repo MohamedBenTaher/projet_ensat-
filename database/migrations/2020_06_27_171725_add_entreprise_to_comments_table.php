@@ -13,7 +13,7 @@ class AddEntrepriseToCommentsTable extends Migration
      */
     public function up()
     {
-       /* Schema::table('comments', function (Blueprint $table) {
+        /*Schema::table('comments', function (Blueprint $table) {
             $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
         });*/
     }

@@ -28,7 +28,7 @@ use App\Comment;?>
   @if(url()->current()=='http://127.0.0.1:8000/commentupdate')
   @if($comment->id==$id)
   {!! Form::open(['action'=>'commentsController@show','method'=>'post'])!!}
-{{Form::text('content',$comment->content)}} <br>
+{{Form::text('content',"$comment->content")}} <br>
 {{Form::submit('submit',['class'=>'btn btn-primary'])}}
 {{Form::hidden('id',$comment->id)}}
 {!! Form::close()!!}
