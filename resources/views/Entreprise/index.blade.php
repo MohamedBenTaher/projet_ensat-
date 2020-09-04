@@ -60,7 +60,7 @@ use App\Comment;?>
     <div class="container">
       {!!Form::open(['action' =>'commentsController@store', 'method' => 'post'])!!}
             
-        {{Form::textarea('content')}} <br>
+        {{Form::textarea('content','',['class'=>'textarea','placeholder' =>'write a comment'])}} <br>
         {{Form::hidden('user_id',Auth::user()->id)}} <br>
             {{Form::submit('publish',['class' =>'btn btn-primary'])}} 
     
@@ -70,7 +70,7 @@ use App\Comment;?>
      
     @foreach (Comment::all() as $comment)
     <div class="container" id="comment">
-    <h3>{{User::Find($comment->user_id)->name}} <span style="font-size: 15px">{{$comment->created_at}}</span></h3>
+    <h4>{{User::Find($comment->user_id)->name}} <span style="font-size: 15px">{{$comment->created_at}}</span></h4>
       @if(url()->current()=='http://127.0.0.1:8000/commentupdate')
       @if($comment->id==$id)
       {!! Form::open(['action'=>'commentsController@show','method'=>'post'])!!}
@@ -92,22 +92,23 @@ use App\Comment;?>
       {{Form::hidden('comment_id',$comment->id)}}
       {{Form::hidden('user_id',Auth::user()->id)}}
      <button type="submit"><i class="far fa-thumbs-up"></i></button>
+     <span>{{Likes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</span>
      {!! Form::close()!!}
       {!! Form::open(['action'=>'dislikesController@store','method'=>'post'])!!}
       {{Form::hidden('comment_id',$comment->id)}}
       {{Form::hidden('user_id',Auth::user()->id)}}
      <button type="submit"><i class="far fa-thumbs-down"></i></button>
+     <span>{{Dislikes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</span>
+
      {!! Form::close()!!}
-    <h2>{{Likes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</h2>
-    <h2>{{Dislikes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</h2>
-    <div class="button">
+    
       @if(Auth::user()->id==$comment->user_id)
       {!! Form::open(['action'=>'commentsController@update','method'=>'post'])!!}
-      {{Form::submit('update',['class'=>'btn btn-primary'])}}
+      {{Form::submit('update',['class'=>'btn btn-primary','id'=>'one'])}}
       {{Form::hidden('id',$comment->id)}}
       {!! Form::close()!!}
       {!! Form::open(['action'=>'commentsController@destroy','method'=>'post'])!!}
-    {{Form::submit('delete',['class'=>'btn btn-primary'])}} 
+    {{Form::submit('delete',['class'=>'btn btn-primary','id'=>'two'])}} 
       {{Form::hidden('content',$comment->id)}}
     {!! Form::close()!!}
     
@@ -115,7 +116,6 @@ use App\Comment;?>
     <br>
       @endif
       @endif
-    </div>
     </div>
         
     @endforeach

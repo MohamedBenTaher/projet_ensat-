@@ -42,7 +42,8 @@ Route::get('comments/comment','commentsController@index');
 Route::post('commentdelete','commentsController@destroy');
 Route::post('commentupdate','commentsController@update');
 Route::post('commentsubmit','commentsController@submit');
-Route::post('commentshow','commentsController@show');
+Route::post('commentsubmit','commentsController@show');
+
 Route::resource('vols','VolController');
 Route::get('/search','VolController@search')->name('vols.search');
 Route::post('likes','likesController@store');
