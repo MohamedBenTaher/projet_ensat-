@@ -25,7 +25,7 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
-        if( auth()->user()->is_admin !== true )
+        if(auth()->user()->is_admin == false  )
             {
                 return redirect('/entreprise');
             }
@@ -41,17 +41,16 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
-        if(auth()->user()->is_admin == 0 )
-        {
-            return redirect('/entreprise');
-        
-        }
+        if(auth()->user()->is_admin == false  )
+            {
+                return redirect('/entreprise');
+            }
      $data['Nom']=$request->Nom;
      $data['Description']=$request->Description;
      $data['user_id'] =auth()->user()->id;
      $ent=Entreprise::create($data);
      return redirect()->route('entreprise.index');
-        
+    
     }
 
     /**

@@ -7,7 +7,7 @@
  
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Une Entreprise</a></h2>
 <br>
- 
+<div class="container">
 <form action="{{ route('entreprise.store')}}" method="POST" name="add_vol">
 @csrf
  
@@ -33,5 +33,6 @@
 </div>
  
 </form>
+</div> 
 @endif
 @endsection

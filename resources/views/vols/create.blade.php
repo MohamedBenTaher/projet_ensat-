@@ -10,7 +10,7 @@
 <br>
 
 
-
+<div class="container">
 <form action="{{ route('vols.store')}}" method="POST" name="add_vol" enctype="multipart/form-data">
 @csrf
 
@@ -105,7 +105,7 @@
     </div>
 </div>
 </form>
-
+</div>
 @endif
 
 <!-- endcan -->  

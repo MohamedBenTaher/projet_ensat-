@@ -44,7 +44,7 @@ class VolController extends Controller
         
         $entreprises = Entreprise::all(); // sert à lister les entreprises li kaynin f la table 'entreprises' pour storer "entreprise_id" ds la table vols
         
-        if( auth()->user()->is_admin !== true )
+        if( auth()->user()->is_admin == false )
             {
                 return redirect('/vols');
             }
@@ -60,10 +60,10 @@ class VolController extends Controller
      */
     public function store(Request $request)
     {
-        /*if(auth()->user()->is_admin == 0 )
+        if(auth()->user()->is_admin == false  )
             {
                 return redirect('/vols');
-            }*/
+            }
 
         
         $data['ville_dep'] = $request->ville_dep;

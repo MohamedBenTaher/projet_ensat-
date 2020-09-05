@@ -20,7 +20,7 @@
 <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
 @yield('head')
-
+    
 
     <style>
       .bd-placeholder-img {
@@ -52,13 +52,17 @@
     </header>
 
   <div class="navbar navbar-light">
-      <a href="#" class="navbar-link">Home</a>
-      <a href="#" class="navbar-link">About</a>
-      <a href="{{route('entreprise.index')}}" class="navbar-link">Collaborateurs</a>
-      <a href="#" class="navbar-link">Nouvelles Destinations</a>
-      <a href="#" class="navbar-link">Offres et Soldes</a>
+      <a href="{{route('home')}}" class="navbar-link">Home</a>
+      <a href="{{route('vols.index')}}" class="navbar-link">Nouvelles Destinations</a>
+      <a href="{{route('vols.index')}}" class="navbar-link">Offres et Soldes</a>
+      @if (Auth::user()->is_admin() == true )
       <a href="{{route('vols.create')}}" class="navbar-link">Ajouter Un Vol </a><!--Admin-->
       <a href="{{route('entreprise.create')}}" class="  navbar-link">Ajouter Un Collaborateur </a><!--Admin-->
+      
+      @endif
+      <a href="{{route('entreprise.index')}}" class="navbar-link">Collaborateurs</a>
+
+
     </div>
   </div>
 
@@ -90,4 +94,3 @@
 		
 </body>
 </html>
-
