@@ -74,10 +74,10 @@ use App\Comment;?>
       @if(url()->current()=='http://127.0.0.1:8000/commentupdate')
       @if($comment->id==$id)
       {!! Form::open(['action'=>'commentsController@show','method'=>'post'])!!}
-    {{Form::text('content',"$comment->content")}} <br>
+    {{Form::text('content',"$comment->content")}} <br> <br>
     {{Form::submit('submit',['class'=>'btn btn-primary'])}}
     {{Form::hidden('id',$comment->id)}}
-    {!! Form::close()!!}
+    {!! Form::close()!!} <br>
     {!! Form::open(['action'=>'commentsController@update','method'=>'post'])!!}
     {{Form::submit('update',['class'=>'btn btn-primary'])}}
     {{Form::hidden('id',$comment->id)}}
@@ -88,33 +88,39 @@ use App\Comment;?>
       @endif
       @else
       <h5>{{$comment->content}}</h5>
-      {!! Form::open(['action'=>'likesController@store','method'=>'post'])!!}
+      <div class="inline">
+        {!! Form::open(['action'=>'likesController@store','method'=>'post'])!!}
       {{Form::hidden('comment_id',$comment->id)}}
       {{Form::hidden('user_id',Auth::user()->id)}}
-     <button type="submit"><i class="far fa-thumbs-up"></i></button>
-     <span>{{Likes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</span>
+     <button type="submit"><i class="fa fa-thumbs-up"></i></button>
+     <span class="span">{{Likes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</span>
      {!! Form::close()!!}
       {!! Form::open(['action'=>'dislikesController@store','method'=>'post'])!!}
       {{Form::hidden('comment_id',$comment->id)}}
       {{Form::hidden('user_id',Auth::user()->id)}}
-     <button type="submit"><i class="far fa-thumbs-down"></i></button>
-     <span>{{Dislikes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</span>
+     <button type="submit"><i class="fa fa-thumbs-down"></i></button>
+     <span class="span">{{Dislikes::where('comment_id',$comment->id)->latest()->first()->number ?? null }}</span>
 
-     {!! Form::close()!!}
-    
-      @if(Auth::user()->id==$comment->user_id)
+     {!! Form::close()!!} <br>
+      </div>
+
+      <div class="inline">
+        @if(Auth::user()->id==$comment->user_id)
       {!! Form::open(['action'=>'commentsController@update','method'=>'post'])!!}
+      <br>
+
       {{Form::submit('update',['class'=>'btn btn-primary','id'=>'one'])}}
       {{Form::hidden('id',$comment->id)}}
-      {!! Form::close()!!}
-      {!! Form::open(['action'=>'commentsController@destroy','method'=>'post'])!!}
+      {!! Form::close()!!} <br>
+      {!! Form::open(['action'=>'commentsController@destroy','method'=>'post'])!!}        <br>
+
     {{Form::submit('delete',['class'=>'btn btn-primary','id'=>'two'])}} 
       {{Form::hidden('content',$comment->id)}}
     {!! Form::close()!!}
     
     
-    <br>
       @endif
+      </div>
       @endif
     </div>
         

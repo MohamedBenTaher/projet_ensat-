@@ -1,8 +1,16 @@
+
 #comment{
-    background-color: grey;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(0,0,0,0.5);
+}
+#comment h5{
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
 }
 #comment h4{
-    color: blue;
+    color: wheat;
 }
 .textarea{
     background-color: rgba(0,0,0,0.1);
@@ -10,6 +18,17 @@
     border: 1px solid rgba(0,0,0,0.5);
     resize: none;
 }
-.container{
-    overflow-x: hidden;
+.inline{
+    display: flex;
+}
+.btn-primary{
+    margin-right: 20px;
+}
+.span{
+    margin-right: 20px;
+
+}
+.fa-thumbs-down{
+    border: none;
+    color: black;
 }
