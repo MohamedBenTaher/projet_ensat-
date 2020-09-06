@@ -11,7 +11,7 @@ class dislikesController extends Controller
         $comment_id=$request->input('comment_id');
         $user_id=$request->input('user_id');
         $number=count(Dislikes::where('comment_id',$comment_id)->get());
-        $number_user=count(Dislikes::where('user_id',$user_id)->get());
+        $number_user=count(Dislikes::where('user_id',$user_id)->where('comment_id',$comment_id)->get());
         if($number_user==0){
         if($number>0){
             $num=Dislikes::where('comment_id',$comment_id)->get();
