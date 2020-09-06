@@ -17,7 +17,7 @@ class AddUsernameToUsersTable extends Migration
             $table->string('username');  
         });*/
     }
-
+    
     /**
      * Reverse the migrations.
      *

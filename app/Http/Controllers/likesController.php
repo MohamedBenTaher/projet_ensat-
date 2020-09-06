@@ -33,7 +33,7 @@ class likesController extends Controller
             likes::where('comment_id',$comment_id)->update(['number' =>$num[0]->number-1]);
             likes::where('user_id',$user_id)->delete();
         }
-        return redirect('/comments/comment');
+        return redirect('/entreprise');
     }
 
 }

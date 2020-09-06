@@ -1,6 +1,15 @@
 #comment{
     background-color: grey;
 }
-#comment h3{
+#comment h4{
     color: blue;
+}
+.textarea{
+    background-color: rgba(0,0,0,0.1);
+    height: 70px;
+    border: 1px solid rgba(0,0,0,0.5);
+    resize: none;
+}
+.container{
+    overflow-x: hidden;
 }

@@ -33,6 +33,6 @@ class dislikesController extends Controller
             Dislikes::where('comment_id',$comment_id)->update(['number' =>$num[0]->number-1]);
             Dislikes::where('user_id',$user_id)->delete();
         }
-        return redirect('/comments/comment');
+        return redirect('/entreprise');
     }
 }

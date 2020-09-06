@@ -123,4 +123,6 @@ class EntrepriseController extends Controller
         return
         view('entreprise.index');
     }
+   
 }
+
