@@ -3,6 +3,7 @@
 
  
 @section('content')
+@if(Auth::check())
 @if (Auth::user()->is_admin() == true )
  
 <h2 style="margin-top: 12px;" class="text-center">Ajouter Une Entreprise</a></h2>
@@ -28,11 +29,12 @@
     
     
     <div class="col-md-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button> <br> <br>
     </div>
 </div>
  
 </form>
 </div> 
+@endif
 @endif
 @endsection

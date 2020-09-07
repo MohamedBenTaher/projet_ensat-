@@ -55,10 +55,12 @@
       <a href="{{route('home')}}" class="navbar-link">Home</a>
       <a href="{{route('vols.index')}}" class="navbar-link">Nouvelles Destinations</a>
       <a href="{{route('vols.index')}}" class="navbar-link">Offres et Soldes</a>
+      @if(Auth::check())
       @if (Auth::user()->is_admin() == true )
       <a href="{{route('vols.create')}}" class="navbar-link">Ajouter Un Vol </a><!--Admin-->
       <a href="{{route('entreprise.create')}}" class="  navbar-link">Ajouter Un Collaborateur </a><!--Admin-->
       
+      @endif
       @endif
       <a href="{{route('entreprise.index')}}" class="navbar-link">Collaborateurs</a>
 
@@ -84,7 +86,7 @@
     </p>
   </div>
   <div>
-   <center><p style="color:white">Project Done By : Youssef Charfi , Yussuf Laidouni , Mohamed Ben Taher, Mehdi Mansour</p></center>
+   <center><p style="color:white">Project Done By : Youssef Charfi , Yussuf Laidouni , Mohamed Ben Taher, El Mehdi Mansour</p></center>
   </div>
 </footer>
 <!-- JS, Popper.js, and jQuery -->

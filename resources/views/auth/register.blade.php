@@ -1,4 +1,3 @@
-@extends('layouts.app')
 @extends('layouts.travel')
 @section('content')
 <div class="container">

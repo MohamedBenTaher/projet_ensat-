@@ -38,13 +38,12 @@ Route::post('commentsubmit','commentController@submit');*/
 
 //Route::resource('entreprise','EntrepriseController');
 
-/*Route::post('comments/comment','commentsController@store');
+Route::post('comments/comment','commentsController@store');
 Route::get('comments/comment','commentsController@index');
 Route::post('commentdelete','commentsController@destroy');
 Route::post('commentupdate','commentsController@update');
 Route::post('commentsubmit','commentsController@submit');
-Route::post('commentshow','commentsController@show');*/
-Route::post('commentsubmit','commentsController@show');
+Route::post('commentshow','commentsController@show');
 
 Route::resource('vols','VolController');
 Route::get('/search','VolController@search')->name('vols.search');
@@ -55,6 +54,6 @@ Route::resource('entreprise','EntrepriseController');
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'VolController@index')->name('home');
 
 

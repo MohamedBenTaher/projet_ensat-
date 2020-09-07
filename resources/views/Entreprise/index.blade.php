@@ -20,7 +20,7 @@ use App\Comment;?>
          <h3 class="card-title" >{{$ent->Nom}}</h3>
          <p class="card-text">{{$ent->Description}}</p>
 
-          <!-- can('view',$ent)-->
+          <!-- can('view',$ent) -->
 
         
          <a href="{{route('entreprise.show',['entreprise' => $ent->id])}}" class="btn btn-outline-Secondary">infos and Reviews</a>
@@ -38,7 +38,7 @@ use App\Comment;?>
         <!-- endcan
          can('delete')-->
          
-         <form  action="{{ route('entreprise.destroy ',['entreprise' => $ent->id]) }}" method="POST">
+         <form  action="{{ route('entreprise.destroy',['entreprise' => $ent->id]) }}" method="POST">
         @csrf
         @method('DELETE')
         
@@ -57,6 +57,8 @@ use App\Comment;?>
   </div>
 
     @endforeach
+
+    @if (Auth::check() )
     <div class="container">
       {!!Form::open(['action' =>'commentsController@store', 'method' => 'post'])!!}
             
@@ -125,4 +127,5 @@ use App\Comment;?>
     </div>
         
     @endforeach
+    @endif
 @endsection

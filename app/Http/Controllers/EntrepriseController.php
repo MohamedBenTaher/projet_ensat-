@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entreprise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EntrepriseController extends Controller
 {
@@ -25,11 +26,12 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
+        if(Auth::check()){
         if(auth()->user()->is_admin == false  )
             {
                 return redirect('/entreprise');
             }
-
+        }
         return view('entreprise.create');
     }
 
@@ -74,11 +76,12 @@ class EntrepriseController extends Controller
     public function edit($id)
     {
         $ent = Entreprise::findOrFail($id); 
-        if(auth()->user()->id !== $ent->user_id)
+        if(auth()->user()->id != $ent->user_id)
             {
                 return redirect('/entreprise');
             }
-        return view('entreprise.edit',[ 'ent' => $ent]); 
+            else{
+        return view('entreprise.edit',[ 'ent' => $ent]);}
     }
 
     /**
@@ -115,13 +118,14 @@ class EntrepriseController extends Controller
     public function destroy($id)
     {
       $ent=Entreprise::findOrFail($id);
-      if(auth()->user()->id !== $ent->user_id)
+      if(auth()->user()->id != $ent->user_id)
             {
                 return redirect('/entreprise');
             }
+            else{
       $ent->delete();
         return
-        view('entreprise.index');
+        view('entreprise.index');}
     }
    
 }
