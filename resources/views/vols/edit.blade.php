@@ -9,7 +9,7 @@
 <h2 style="margin-top: 12px;" class="text-center">mettre à jour un vol</a></h2>
 <br>
  
-<form action="{{route('vols.update',['vol'=>$vol->id])}}" method="POST" name="add_vol">
+<form action="{{route('vols.update',['vol'=>$vol->id])}}" method="POST" name="add_vol" enctype="multipart/form-data">
 @csrf
  @method('PUT')
 <div class="row">
