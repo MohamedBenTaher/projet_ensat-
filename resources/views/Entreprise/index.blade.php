@@ -59,6 +59,7 @@ use App\Comment;?>
     @endforeach
 
     @if (Auth::check() )
+    <br><br>
     <div class="container">
       {!!Form::open(['action' =>'commentsController@store', 'method' => 'post'])!!}
             
@@ -80,10 +81,7 @@ use App\Comment;?>
     {{Form::submit('submit',['class'=>'btn btn-primary'])}}
     {{Form::hidden('id',$comment->id)}}
     {!! Form::close()!!} <br>
-    {!! Form::open(['action'=>'commentsController@update','method'=>'post'])!!}
-    {{Form::submit('update',['class'=>'btn btn-primary'])}}
-    {{Form::hidden('id',$comment->id)}}
-    {!! Form::close()!!}
+ 
       @else
       <h5>{{$comment->content}}</h5> <br>
     
