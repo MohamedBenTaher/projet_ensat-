@@ -8,7 +8,7 @@
 
 <h2 style="margin-top: 12px;" class="text-center">mettre à jour un vol</a></h2>
 <br>
- 
+<div class="container">
 <form action="{{route('vols.update',['vol'=>$vol->id])}}" method="POST" name="add_vol">
 @csrf
  @method('PUT')
@@ -85,9 +85,9 @@
        <input type="submit" value="mettre à jour" class="btn btn-primary">
     </div>
 </div>
- 
-</form>
-@endif
+ </form>
+</div>
+ @endif
 @endif 
 @endif
 
