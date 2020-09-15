@@ -74,7 +74,7 @@ use App\Comment;?>
     @foreach (Comment::all() as $comment)
     <div class="container" id="comment">
     <h4>{{User::Find($comment->user_id)->name}} <span style="font-size: 15px">{{$comment->created_at}}</span></h4>
-      @if(url()->current()=='http://127.0.0.1:8000/commentupdate')
+      @if(url()->current()=='http://127.0.0.1:8000/commentupdate' || url()->current()=='http://localhost:8000/commentupdate')
       @if($comment->id==$id)
       {!! Form::open(['action'=>'commentsController@show','method'=>'post'])!!}
     {{Form::text('content',"$comment->content")}} <br> <br>

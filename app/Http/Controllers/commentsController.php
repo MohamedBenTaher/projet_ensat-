@@ -19,21 +19,6 @@ class commentsController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
-    {
-        return view("comments.comment");
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -70,16 +55,6 @@ class commentsController extends Controller
         return redirect('/entreprise');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -92,7 +67,6 @@ class commentsController extends Controller
     {
         $id=$request->input('id');
         $ents=Entreprise::all();
-
         return view('/Entreprise/index',['id'=>$id,'ents'=>$ents]);
     }
 
