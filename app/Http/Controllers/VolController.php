@@ -121,9 +121,11 @@ class VolController extends Controller
                 return redirect('/vols');
             }
 
+            $entreprises = Entreprise::all();
+
         //$this->authorize('update',$vol);
 
-        return view('vols.edit',[ 'vol' => $vol]); 
+        return view('vols.edit',[ 'vol' => $vol,'entreprises'=>$entreprises]); 
     }
 
     /**
@@ -175,7 +177,8 @@ class VolController extends Controller
         $vol->save();
         
         
-        return  view('vols.show',['vol' => $vol]);
+        return  
+        redirect('/');
     }
 
     /**
