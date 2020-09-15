@@ -1,6 +1,7 @@
 @extends('layouts.travel')
 @section('content')
     
+<div class="container">
 
 <div id="card_aff">
     <div class="card">
@@ -37,6 +38,8 @@
          <span aria-hidden="true">&times;</span>
        </button>
        </form>
+
+     </div>
        @endif
        
        @endif

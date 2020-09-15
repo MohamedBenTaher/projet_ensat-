@@ -7,11 +7,13 @@
 
 <h2 style="margin-top: 12px;" class="text-center">Mettre à jour les infos de l'entreprise</a></h2>
 <br>
- 
+<div class="container"> 
 <form action="{{ route('entreprise.update',['entreprise'=>$ent->id])}}" method="POST" name="add_vol">
 @csrf
 @method('PUT')
- 
+
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
@@ -32,7 +34,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
- 
+</div>
 </form>
 @endif
 @endif 

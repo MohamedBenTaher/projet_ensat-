@@ -10,6 +10,7 @@ use App\Comment;?>
 <link href="{{ asset('css/comment.css') }}" rel="stylesheet">
 @endsection
 @section('content')
+<div class="container">
 <div class="row mb-2">
     @foreach ($ents as $ent)
     <div id="card_aff">
@@ -22,6 +23,7 @@ use App\Comment;?>
 
           <!-- can('view',$ent) -->
 
+        
         
          <a href="{{route('entreprise.show',['entreprise' => $ent->id])}}" class="btn btn-outline-Secondary">infos and Reviews</a>
          
@@ -72,6 +74,7 @@ use App\Comment;?>
     </div>
      
     @foreach (Comment::all() as $comment)
+    <br><br>
     <div class="container" id="comment">
     <h4>{{User::Find($comment->user_id)->name}} <span style="font-size: 15px">{{$comment->created_at}}</span></h4>
       @if(url()->current()=='http://127.0.0.1:8000/commentupdate' || url()->current()=='http://localhost:8000/commentupdate')
@@ -126,4 +129,5 @@ use App\Comment;?>
         
     @endforeach
     @endif
+  </div>
 @endsection
